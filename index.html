@@ -3,91 +3,141 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>YourStartup</title>
-  <meta name="description" content="A student startup prototype for BSAD 281.">
+  <meta name="theme-color" content="#f2f6ef">
+  <meta name="description" content="A simple plant-care dashboard with watering reminders and personal care notes.">
+  <title>Sprout - Plant care, in rhythm</title>
+  <link rel="preconnect" href="https://images.unsplash.com">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-  <!-- =========================================================
-       HEADER: logo text + navigation.
-       Each link points to a "view" further down the page (#home, #explore, #about).
-       ========================================================= -->
   <header class="site-header">
-    <a class="brand" href="#home" id="brand-name">YourStartup</a>
-    <nav aria-label="Main">
-      <a href="#home">Home</a>
-      <a href="#explore">Explore</a>
-      <a href="#about">About</a>
+    <a class="brand" href="#top" aria-label="Sprout home"><svg class="brand-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="24" r="23" fill="#d8f278"/><path d="M5 38h38" fill="none" stroke="#7e9d54" stroke-linecap="round" stroke-width="1.5"/><path d="M36 24v14" fill="none" stroke="#78573d" stroke-linecap="round" stroke-width="3"/><circle cx="32" cy="17" r="7" fill="#4c8a4c"/><circle cx="38" cy="20" r="6" fill="#2e7144"/><circle cx="32" cy="23" r="5" fill="#78a84f"/><circle cx="13" cy="14" r="3" fill="#f2bd8c"/><path d="M10 13c.5-4 6.7-5 9-1.5l.5 2.5H10z" fill="#d85d42"/><path d="M10 14h10" fill="none" stroke="#a84235" stroke-linecap="round" stroke-width="1.5"/><path d="M11 19c2-2 6-2 8 0l2 8-8 1-3-7z" fill="#d85d42"/><path d="m13 27-1 9m7-9 2 9" fill="none" stroke="#214b37" stroke-linecap="round" stroke-width="2.5"/><path d="m18 21 4-2 2 2" fill="none" stroke="#f2bd8c" stroke-linecap="round" stroke-width="2"/><path d="M22 20h6v6h-6z" fill="#fffef9" stroke="#286347" stroke-linejoin="round" stroke-width="1.5"/><path d="M23 20c0-3 4-3 4 0m1 2 4-2 2 1" fill="none" stroke="#286347" stroke-linecap="round" stroke-width="1.5"/><path d="M32 23c1 1 1 2 0 2m3 0c1 1 1 2 0 2" fill="none" stroke="#4e9bb0" stroke-linecap="round" stroke-width="1.5"/></svg>sprout<span class="brand-period">.</span></a>
+    <nav aria-label="Main navigation">
+      <a class="nav-link active" href="#plants">My plants</a>
+      <a class="nav-link" href="#discover">Discover</a>
+      <a class="nav-link" href="#reminders">Reminders</a>
     </nav>
+    <a class="profile-link" href="#plants" aria-label="Your plant collection">Garden <span class="profile-dot" aria-hidden="true"></span></a>
   </header>
 
-  <main>
-
-    <!-- =======================================================
-         VIEW 1: HOME — what you do, for whom, and why it matters.
-         ======================================================= -->
-    <section id="home" data-view>
-      <div class="hero">
-        <p class="eyebrow">Prototype</p>
-        <h1 id="tagline">One sentence that says what your startup does.</h1>
-        <p class="lead" id="pitch">
-          Who is your customer, what problem do they have, and why is your
-          solution better than what they use today?
-        </p>
-        <a class="button" href="#explore">See it in action</a>
+  <main id="top">
+    <section class="welcome" aria-labelledby="page-title">
+      <div>
+        <p class="eyebrow"><span class="eyebrow-line"></span> YOUR PERSONAL PLANT JOURNAL</p>
+        <h1 id="page-title">A little care,<br><em>right on time.</em></h1>
+        <p class="welcome-copy">A calmer way to keep every leaf happy. Your next check-in is already taking shape.</p>
       </div>
-
-      <div class="steps">
-        <div class="card">
-          <h2>1. Step one</h2>
-          <p>Describe the first thing a customer does.</p>
-        </div>
-        <div class="card">
-          <h2>2. Step two</h2>
-          <p>Describe what happens next.</p>
-        </div>
-        <div class="card">
-          <h2>3. Step three</h2>
-          <p>Describe the result the customer gets.</p>
-        </div>
+      <div class="welcome-art" role="img" aria-label="Sunlit collection of leafy houseplants">
+        <div class="art-label"><span class="sun-mark" aria-hidden="true"></span><span>GROW AT YOUR OWN PACE</span></div>
       </div>
     </section>
 
-    <!-- =======================================================
-         VIEW 2: EXPLORE — a list built from the fake data in data.js.
-         ======================================================= -->
-    <section id="explore" data-view hidden>
-      <h1>Explore</h1>
-      <p class="muted">These examples are fake. They come from <code>data.js</code>.</p>
-
-      <label class="search">
-        <span>Search</span>
-        <input type="search" id="search-box" placeholder="Type to filter…">
-      </label>
-
-      <p class="muted" id="saved-count"></p>
-      <div class="grid" id="listing-grid"></div>
-      <p class="empty" id="empty-message" hidden>Nothing matches your search.</p>
+    <section class="daily-strip" aria-label="Daily watering overview">
+      <div class="today-label"><span class="today-icon" aria-hidden="true">✳</span><div><strong id="today-date">Today</strong><span>YOUR DAILY RHYTHM</span></div></div>
+      <div class="strip-stat"><strong id="due-count">0</strong><span>need a drink</span></div>
+      <div class="strip-stat"><strong id="watered-count">0</strong><span>watered today</span></div>
+      <div class="strip-note"><span class="status-pip"></span><span id="daily-message">Your garden is ready when you are.</span></div>
     </section>
 
-    <!-- =======================================================
-         VIEW 3: ABOUT — your team and your story.
-         ======================================================= -->
-    <section id="about" data-view hidden>
-      <h1>About us</h1>
-      <p>Tell the story of why your team started this company.</p>
-      <p>Use first names only, or no names at all — this site is public.</p>
+    <section class="content-grid" id="reminders">
+      <div class="section-heading">
+        <div><p class="eyebrow">A ROUTINE THAT FITS</p><h2>Daily check-ins</h2></div>
+        <span class="section-aside">Two gentle nudges, on your time</span>
+      </div>
+      <div class="reminder-layout">
+        <div class="reminder-card">
+          <div class="reminder-intro"><span class="reminder-symbol" aria-hidden="true">◷</span><div><h3>Set your reminders</h3><p>Choose when you want to check in with your plants.</p></div></div>
+          <div class="time-controls">
+            <label class="time-control"><span class="time-icon morning" aria-hidden="true">☀</span><span class="time-label">Morning</span><input id="morning-time" type="time" value="08:00" aria-label="Morning reminder time"></label>
+            <span class="time-divider" aria-hidden="true"></span>
+            <label class="time-control"><span class="time-icon evening" aria-hidden="true">☾</span><span class="time-label">Evening</span><input id="evening-time" type="time" value="18:00" aria-label="Evening reminder time"></label>
+          </div>
+          <div class="reminder-bottom"><p id="reminder-status">Reminders work while this page is open.</p><button class="text-button" id="notification-button" type="button">Enable browser alerts <span aria-hidden="true">↗</span></button></div>
+        </div>
+        <aside class="care-tip"><span class="tip-kicker">A GOOD THING TO KNOW</span><span class="tip-leaf" aria-hidden="true">✳</span><h3>Check the soil first.</h3><p>Plant schedules are a guide, not a rule. A quick fingertip check can help you avoid overwatering.</p><span class="tip-foot">GENTLE CARE GOES A LONG WAY</span></aside>
+      </div>
     </section>
 
+    <section class="plants-section" id="plants">
+      <div class="section-heading plants-heading">
+        <div><p class="eyebrow">YOUR LITTLE CORNER OF GREEN</p><h2>Your plants <span class="plant-count" id="plant-count">0</span></h2></div>
+        <button class="add-button" id="add-plant-button" type="button"><span aria-hidden="true">+</span> Add a plant</button>
+      </div>
+      <div id="priority-callout" class="priority-callout" hidden></div>
+      <div class="plant-grid" id="plant-grid" aria-live="polite"></div>
+      <div class="empty-state" id="empty-state" hidden>
+        <span class="empty-sprout" aria-hidden="true">✳</span>
+        <h3>Your plant shelf is waiting.</h3>
+        <p>Add your first plant to start a care routine that feels easy to keep.</p>
+        <button class="add-button" id="empty-add-button" type="button"><span aria-hidden="true">+</span> Add your first plant</button>
+      </div>
+    </section>
+
+    <section class="discover-section" id="discover" aria-labelledby="discover-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">A WIDER WINDOW ON GROWING</p><h2 id="discover-title">Compare, browse, grow.</h2></div>
+        <span class="section-aside">Community and shop examples for this prototype</span>
+      </div>
+
+      <div class="compare-panel">
+        <div class="discover-heading">
+          <div><p class="eyebrow">GARDEN CHECK-IN</p><h3>How does your care rhythm compare?</h3></div>
+          <span class="demo-stamp">SAMPLE GARDENS</span>
+        </div>
+        <p class="compare-caption">Plants currently on schedule, compared with fictional community gardens.</p>
+        <div class="compare-list" id="garden-comparison" aria-live="polite"></div>
+      </div>
+
+      <div class="shop-section">
+        <div class="discover-heading shop-heading">
+          <div><p class="eyebrow">NEARBY FLOWER SHOPS</p><h3>Find a plant that fits your garden.</h3></div>
+          <span class="demo-stamp">DEMO STOCK · ANTIGONISH</span>
+        </div>
+        <div class="shop-toolbar">
+          <label class="shop-filter">Garden light
+            <select id="garden-light">
+              <option value="bright">Bright, indirect</option>
+              <option value="medium">Medium, indirect</option>
+              <option value="low">Low light</option>
+            </select>
+          </label>
+          <label class="shop-filter">Flower shop
+            <select id="shop-filter"><option value="all">All demo shops</option></select>
+          </label>
+          <label class="compatible-toggle"><input id="compatible-only" type="checkbox"><span>Only compatible</span></label>
+        </div>
+        <div class="shop-results-line"><span id="shop-result-count">Showing demo plants</span><span>Sample prices and stock</span></div>
+        <div class="shop-grid" id="shop-grid" aria-live="polite"></div>
+        <p class="shop-empty" id="shop-empty" hidden>No plants match these filters. Try another shop or light profile.</p>
+        <p class="demo-disclaimer">Shop names, locations, prices, and availability are fictional examples, not live listings.</p>
+      </div>
+    </section>
+
+    <section class="business-note" aria-label="Future business ideas">
+      <div><span class="eyebrow">A SEED FOR LATER</span><h2>Room to grow, beyond the windowsill.</h2></div>
+      <p>A future version could offer a paid plan for larger collections and shared gardens, plus optional affiliate links to trusted plant shops. Care advice should stay useful and free; paid features can add convenience, not pressure.</p>
+    </section>
   </main>
 
-  <!-- Keep this footer. Your site must say it is a student project. -->
+  <dialog class="plant-dialog" id="plant-dialog" aria-labelledby="dialog-title">
+    <form id="plant-form">
+      <div class="dialog-heading"><div><p class="eyebrow">YOUR GARDEN, YOUR WAY</p><h2 id="dialog-title">Add a plant</h2></div><button class="close-button" id="close-dialog" type="button" aria-label="Close dialog">×</button></div>
+      <label class="form-field">Plant name<input id="plant-name" name="name" type="text" maxlength="48" placeholder="e.g. Monstera" required></label>
+      <label class="form-field">Type or variety <span class="optional">OPTIONAL</span><input id="plant-species" name="species" type="text" maxlength="60" placeholder="e.g. Monstera deliciosa"></label>
+      <label class="form-field">Water every <span class="input-with-unit"><input id="plant-interval" name="interval" type="number" min="1" max="60" value="7" required><span>days</span></span></label>
+      <label class="form-field">Care notes <span class="optional">OPTIONAL</span><textarea id="plant-notes" name="notes" rows="3" maxlength="500" placeholder="Light, soil, quirks, or anything you want to remember"></textarea></label>
+      <div class="dialog-actions"><button class="cancel-button" id="cancel-dialog" type="button">Cancel</button><button class="add-button" type="submit" id="save-plant-button">Add to my plants</button></div>
+    </form>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
   <footer class="site-footer">
-    <p>Student prototype for BSAD 281 at St. Francis Xavier University. Not a real company — all data is fictional.</p>
+    <a class="footer-brand" href="#top">sprout<span>.</span></a>
+    <p>Student prototype for BSAD 281 at St. Francis Xavier University. Not a real company; all data is fictional.</p>
+    <span class="footer-note">MADE FOR THE LOVE OF LEAVES</span>
   </footer>
 
-  <!-- Scripts load in this order: data first, then the code that uses it. -->
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>

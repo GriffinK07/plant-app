@@ -22,6 +22,15 @@ Copy this block for each session.
 - **What broke, and how we fixed it:**
 - **Committed?** yes / no — commit message:
 
+### Session — 2026-11-02 — driver: not recorded
+
+- **Goal for this session:** Add garden comparisons and flower-shop plant discovery.
+- **Key prompts we gave Copilot** (paste the important ones):
+  1. Add a feature prototype to compare gardens and browse local flower shops, plant availability, and garden compatibility.
+- **What worked:** Added sample garden comparisons, light-profile compatibility filters, demo shop inventory, and add-to-garden actions that feed the care dashboard.
+- **What broke, and how we fixed it:** No issues noted during validation.
+- **Committed?** no — commit message: not committed.
+
 ---
 
 ## Things that broke (running list)
@@ -36,6 +45,7 @@ Everything we wanted but faked or left out — real logins, a real database, pay
 
 | Feature we faked or skipped | Why a real company would need it | How hard / expensive? |
 |---|---|---|
+| Live shop inventory and community garden comparisons | Real availability, locations, and opt-in garden benchmarks need shop data feeds, user accounts, consent, and a secure backend. | High; requires partnerships, backend development, and ongoing data operations. |
 | | | |
 
 ## Reflection (fill in at the end)
